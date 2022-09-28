@@ -96,3 +96,16 @@ ___
 * 関数コンポーネント内でルーティング情報にアクセスするためのフック。
 * Next.jsのnext/routerからインポートできる。
 * ルーティング情報の取得の他、router.pushでページ遷移にも利用できる。
+<br>
+<br>
+
+## getServerSideProps
+* getServerSidePropsの`context`では、 __getStaticProps__　のcontextで参照できるデータに加え、リクエストの情報などを参照できる。
+
+|  パラメータ  |  内容  |
+| ---- | ---- |
+|  req  |  http.IncomingMessageのインスタンスでリクエストの情報やCookieを参照できる  |
+|  res  |  http.ServerResponseのインスタンスでCookieをセットしたり、レスポンスヘッダーを書き換えたりすることに使える  |
+|  resolvedUrl  |  実際にアクセスがあったパス  |
+|  query  |  そのクエリをオブジェクトにしたもの  |
+
