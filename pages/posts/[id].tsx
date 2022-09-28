@@ -8,10 +8,6 @@ type PostProps = {
    id: string
 }
 
-interface Params extends ParsedUrlQuery {
-  id: string
-}
-
 const Post: NextPage<PostProps> = (props) => {
   const { id } = props
   const router = useRouter()
@@ -72,7 +68,7 @@ export const getStaticProps: GetStaticProps<PostProps> = async (context) => {
       : context.params?.id
   */
 
-  const { id } = context.params as Params
+  const { id } = context.params as PostProps
 
   return {
     props: {
