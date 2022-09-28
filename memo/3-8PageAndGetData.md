@@ -14,3 +14,38 @@ __レンダリング手法を決定する主な要素はデータ取得の関数
 <br>
 pagesはその種別によってデータ取得に使える関数が異なるとも言える。<br>
 ページコンポーネントで全ての表示部分を実装する必要はない。ページ間で共通に使用するコードやUIパーツはpagesディレクトリ外に定義し、インポートして使用できる。
+<br>
+<br>
+
+```
+SSGについて
+
+$npm run dev
+
+を使って開発サーバーを立ち上げている場合は最新のコードを使ってページを表示するため、リクエストがあるたびにgetStaticPropsが実行されてサーバーでページを生成する。
+```
+<br>
+<br>
+
+## getStaticProps
+___
+
+getStaticPropsはエクスポートする必要があり、非同期関数としてasyncとともに定義する必要がある。<br>
+getStaticPropsの引数にはcontextが与えられる（ReactのContextとは別物）。contextにはビルド時に使用できるデータが含まれる。
+
+```javascript
+export async function getStaticProps(context) {
+  return {
+    props: {}
+  }
+}
+```
+
+|  パラメータ  |  内容  |
+| ---- | ---- |
+|  params  |  パスパラメータ。SSGの場合はgetStaticPaths関数を別途定義したときに参照可能。  |
+|  locale  |  現在のロケール情報（可能な場合）  |
+|  locales  |  サポートしているロケールの配列（可能な場合）  |
+|  defaultLocale  |  デフォルトのロケールのデータ（可能な場合）  |
+|  preview  |  Preview Modeかどうか  |
+|  previewData  |  Preview ModeでsetPreviewDataによってセットされたデータ  |
