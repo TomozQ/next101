@@ -49,3 +49,32 @@ export async function getStaticProps(context) {
 |  defaultLocale  |  デフォルトのロケールのデータ（可能な場合）  |
 |  preview  |  Preview Modeかどうか  |
 |  previewData  |  Preview ModeでsetPreviewDataによってセットされたデータ  |
+
+<br>
+<br>
+
+## getStaticPaths
+___
+
+### Dynamic Routing
+パスパラメータを使って複数ページを一つのファイルで生成できる。動的ルーティングは下記２要素から成り立つ
+
+1. [パラメータ].tsxのような[]で囲んだ特別なファイル名
+2. getStaticPropsとあわせてgetStaticPathsを利用する。
+
+<br>
+
+`getStaticPaths`は`getStaticProps`実行前に呼ばれる関数で、生成したいページのパスパラメータの組み合わせ(__paths__)とフォールバック(__fallback__)を返す。<br>
+* pathsはパスパラメータの組み合わせを表し、配列の要素１つが１つのページに対応する。
+* fallbackはgetStaticPathsが生成するページが存在しない場合の処理を記載する。
+
+```javascript
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { ... }}
+    ],
+    fallback: false // trueもしくは'blocking'を指定可能
+  }
+}
+```
